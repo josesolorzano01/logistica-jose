@@ -17,12 +17,12 @@ def cargar_modelo():
     pkl = (
         "kmeans_riesgo_actuarial.pkl"
         if os.path.exists("kmeans_riesgo_actuarial.pkl")
-        else "kmeans_riesgo_actuarial(2).pkl"
+        else "kmeans_riesgo_actuarial.pkl"
     )
     meta = (
         "model_metadata.json"
         if os.path.exists("model_metadata.json")
-        else "model_metadata(2).json"
+        else "model_metadata.json"
     )
     modelo = joblib.load(pkl)
     with open(meta, encoding="utf-8") as f:
@@ -31,7 +31,7 @@ def cargar_modelo():
 
 @st.cache_data
 def cargar_base():
-    csv = "insurance.csv" if os.path.exists("insurance.csv") else "insurance(2).csv"
+    csv = "insurance.csv" if os.path.exists("insurance.csv") else "insurance.csv"
     return pd.read_csv(csv)
 
 modelo, metadata = cargar_modelo()
